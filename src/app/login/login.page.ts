@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
         if (this.authService.isEmailVerified) {
           this.router.navigate(['logout']);
         } else {
-          window.alert('Email is not verified');
+          window.alert('El correo no esta verificado!');
           return false;
         }
       })
