@@ -1,25 +1,27 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="custom-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button default-href="#"></ion-back-button>
     </ion-buttons>
-    <ion-title>Registrarse</ion-title>
+    <ion-title class="custom-title-font" style="text-align: right;"><b>Registrate</b></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <form>    
     <ion-item lines="full">
-      <ion-label position="floating">Correo Electronico</ion-label>
+      <ion-label class="custom-title-font" position="floating"><b>Correo Electrónico</b></ion-label>
       <ion-input type="text" #email required></ion-input>
     </ion-item> 
     <ion-item lines="full">
-      <ion-label position="floating">Contraseña</ion-label>
+      <ion-label class="custom-title-font" position="floating"><b>Contraseña</b></ion-label>
       <ion-input type="password" #password required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col> 
-      <ion-button type="submit" (click)="signUp(email, password)" expand="block">Registrarse</ion-button>
+      <ion-button class="custom-title-font"  type="submit" (click)="signUp(email, password)" expand="block">
+        <ion-icon slot="start" name="pizza" style="color:#fed49c"></ion-icon>  
+        Registrarse</ion-button>
       </ion-col>
     </ion-row>
   </form>

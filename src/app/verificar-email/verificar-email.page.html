@@ -1,21 +1,24 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="custom-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button default-href="#"></ion-back-button>
     </ion-buttons>
-    <ion-title>Verificar Email</ion-title>
+    <ion-title class="custom-title-font" style="text-align: left; color: black;"><b>Verificar Email</b></ion-title>
   </ion-toolbar>
 </ion-header>
+
+
 <ion-content>
   <ion-grid>
     <ion-row>
-      <h2>Verificar Email</h2>
-      <p>
-        Por favor revisa tu correo electronico y dale click al link para verificar tu correo.
-      </p>
-      <ion-button type="submit" (click)="authService.SendVerificationMail()" expand="block">
-        Reenviar correo de verificación
-      </ion-button>
+      <h2 class="custom-title-font" style="color:#fed49c">¡Estas a un paso de ser parte de nuestros crazy users!</h2>
+      <p class="custom-title-font">Te invitamos a que revises tu correo electrónico y des click al 
+        link que te enviamos para verificar que eres tú.</p>
+      <ion-col style="text-align: center;"> 
+      <ion-button class="custom-title-font" type="submit" (click)="authService.SendVerificationMail()" expand="block">
+        <ion-icon slot="start" name="refresh"></ion-icon>  
+        Reenviar correo de verificación</ion-button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
