@@ -1,11 +1,16 @@
     .custom-toolbar{
     --background: url('/assets/Images/registro.jpg') no-repeat center center / cover;
     }
+
+    .custom-title-font{
+      font-family: 'Bookman Old Style';
+    }
   
-    .custom-title-font {
+    ion-title {
       font-family: 'Bookman Old Style';
     }
 
     ion-button {
         --background: #03381d;
+        font-family: 'Bookman Old Style';
     }
