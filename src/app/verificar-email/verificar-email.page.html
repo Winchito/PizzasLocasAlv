@@ -18,6 +18,9 @@
       <ion-button class="custom-title-font" type="submit" (click)="authService.SendVerificationMail()" expand="block">
         <ion-icon slot="start" name="refresh"></ion-icon>  
         Reenviar correo de verificación</ion-button>
+        <ion-button class="custom-title-font" type="submit" [routerLink]="['/home']" expand="block">
+          <ion-icon slot="start" name="home"></ion-icon>  
+          Volver al Inicio de Sesión</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

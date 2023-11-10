@@ -31,6 +31,22 @@ const routes: Routes = [
     path: 'recuperar-contra',
     loadChildren: () => import('./recuperar-contra/recuperar-contra.module').then( m => m.RecuperarContraPageModule)
   },
+  {
+    path: 'home-usuario-loggeado',
+    loadChildren: () => import('./home-usuario-loggeado/home-usuario-loggeado.module').then( m => m.HomeUsuarioLoggeadoPageModule)
+  },
+  {
+    path: 'pide-en-linea',
+    loadChildren: () => import('./pide-en-linea/pide-en-linea.module').then( m => m.PideEnLineaPageModule)
+  },
+  {
+    path: 'menu-principal',
+    loadChildren: () => import('./menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
+  },
+  {
+    path: 'catalogo',
+    loadChildren: () => import('./catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+  },
 ];
 
 @NgModule({
