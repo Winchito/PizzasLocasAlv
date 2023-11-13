@@ -15,3 +15,4 @@ describe('CatalogoPage', () => {
     expect(component).toBeTruthy();
   });
 });
+

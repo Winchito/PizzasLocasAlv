@@ -18,30 +18,24 @@
   </ion-item>
   <ion-row>
     <ion-col>
-      <ion-button type="submit" (click)="logIn(email, password)" expand="block"
-        >Inicia Sesión</ion-button
-      >
+      <ion-button class="custom1" type="submit" (click)="logIn(email, password)" expand="block">Inicia Sesión
+        <ion-icon slot="start" name="person"></ion-icon>    
+      </ion-button> 
     </ion-col>
   </ion-row>
+
   <ion-row>
     <ion-col>
-      <ion-button
-        expand="block"
-        color="warning"
-        [routerLink]="['/recuperar-contra']"
-      >
-        Recuperar Contraseña
+      <ion-button class="custom2" expand="block" [routerLink]="['/recuperar-contra']">Recuperar Contraseña
+        <ion-icon slot="start" name="key"></ion-icon>  
       </ion-button>
     </ion-col>
   </ion-row>
+
   <ion-row>
     <ion-col>
-      <ion-button
-        type="submit"
-        color="danger"
-        (click)="authService.GoogleAuth()"
-        expand="block">
-        Iniciar sesión con Google
+      <ion-button  class="custom3" type="submit" (click)="authService.GoogleAuth()" expand="block">Iniciar sesión con Google
+        <ion-icon slot="start" name="logo-google"></ion-icon>  
       </ion-button>
     </ion-col>
   </ion-row>

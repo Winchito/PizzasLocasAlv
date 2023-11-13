@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
+import { MenuController} from '@ionic/angular';
+
 
 @Component({
   selector: 'app-catalogo',
@@ -9,8 +11,9 @@ import { AuthenticationService } from '../services/authentication.service';
 export class CatalogoPage implements OnInit {
 
   constructor(public authService: AuthenticationService) { }
-
+  
   ngOnInit() {
+    
   }
-
+  
 }

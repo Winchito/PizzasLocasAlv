@@ -8,11 +8,10 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./home-usuario-loggeado.page.scss'],
 })
 export class HomeUsuarioLoggeadoPage implements OnInit {
-
-  constructor(public authService: AuthenticationService) { }
+  
+  constructor(public authService: AuthenticationService) {}
 
   ngOnInit() {
+    
   }
-  
-
 }
