@@ -1,50 +1,13 @@
-<ion-menu type="overlay" contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menú Principal</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-list>
-      <ion-item>
-        <ion-avatar aria-hidden="true" slot="start">
-          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </ion-avatar>
-        <ion-label class="custom-title-font"><b>Usuario</b></ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/home-usuario-loggeado']">
-        <ion-icon aria-hidden="true" name="home" slot="start"></ion-icon>
-        <ion-label class="custom-title-font">Inicio</ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/pide-en-linea']">
-        <ion-icon aria-hidden="true" name="bicycle" slot="start"></ion-icon>
-        <ion-label class="custom-title-font">Pide En Línea</ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/catalogo']">
-        <ion-icon aria-hidden="true" name="book" slot="start"></ion-icon>
-        <ion-label class="custom-title-font">Menú</ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/home-usuario-loggeado']">
-        <ion-icon aria-hidden="true" name="rocket" slot="start"></ion-icon>
-        <ion-label class="custom-title-font">Sigue tu Pedido</ion-label>
-      </ion-item>
-    </ion-list>
-    </ion-content>
-          <ion-item (click)="authService.SignOut()">
-        <ion-icon aria-hidden="true" name="exit" slot="start"></ion-icon>
-        <ion-label class="custom-title-font"><b>Cerrar Sesión</b></ion-label>
-      </ion-item>
-</ion-menu> 
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button menu="main-menu"></ion-menu-button>
       </ion-buttons>
       <ion-buttons slot="primary" expand="block" [routerLink]="['/']">
         <ion-icon slot="end" name="cart"></ion-icon>
       </ion-buttons>
-      <img  class="centered-header-image" src="/assets/Images/pide-linea.png" />
+       <img  class="centered-header-image" src="/assets/Images/pide-linea.png" />
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">

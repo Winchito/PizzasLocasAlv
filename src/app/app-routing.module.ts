@@ -40,10 +40,6 @@ const routes: Routes = [
     loadChildren: () => import('./pide-en-linea/pide-en-linea.module').then( m => m.PideEnLineaPageModule)
   },
   {
-    path: 'menu-principal',
-    loadChildren: () => import('./menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
-  },
-  {
     path: 'catalogo',
     loadChildren: () => import('./catalogo/catalogo.module').then( m => m.CatalogoPageModule)
   },

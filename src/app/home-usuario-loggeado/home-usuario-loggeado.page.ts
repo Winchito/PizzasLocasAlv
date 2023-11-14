@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home-usuario-loggeado',
@@ -14,4 +14,6 @@ export class HomeUsuarioLoggeadoPage implements OnInit {
   ngOnInit() {
     
   }
+
+
 }
