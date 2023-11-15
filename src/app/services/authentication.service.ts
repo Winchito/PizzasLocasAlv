@@ -71,11 +71,6 @@ export class AuthenticationService {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.emailVerified !== false ? true : false;
   }
-
-  // Registro con Gmail
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider());
-  }
   
   // Auth providers
   AuthLogin(provider: any) {
