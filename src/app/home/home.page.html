@@ -7,7 +7,7 @@
 <ion-content class="auth-form">
   <ion-item class="ion-margin">
     <ion-label class="ion-text-wrap">
-      <h1 style="color:#fed49c"><b>Bienvenido(a)</b></h1>
+      <h1>Bienvenido(a)</h1>
       <p style="color:white">
         <br>
         Si ya haces parte de nuestros crazy users, inicia sesión; de lo contrario te invitamos a registrarte para realizar tu 
@@ -17,15 +17,11 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col class="ion-align-self-center">
-        <ion-button [routerLink]="['/registro']" expand="block" color="primary">
+      <ion-col>
+        <ion-button class="custom1" [routerLink]="['/registro']" expand="block">
           <ion-icon slot="start" name="person-add" color="dark"></ion-icon>  
         Registrate</ion-button>
-
-        <span class="divider line one-line"></span>
-        <span class="already"></span>
-
-        <ion-button [routerLink]="['/login']" expand="block" color="danger">
+        <ion-button class="custom2" [routerLink]="['/login']" expand="block">
           <ion-icon slot="start" name="person" color="dark"></ion-icon>  
         Inicia Sesión</ion-button>
       </ion-col>
