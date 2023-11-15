@@ -1,20 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-title style="text-align: right;"><b>Pizzas Locas Alvarito</b></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="auth-form">
+  <ion-item class="ion-margin">
+    <ion-label class="ion-text-wrap">
+      <h1>Bienvenido(a)</h1>
+      <p style="color:white">
+        <br>
+        Si ya haces parte de nuestros crazy users, inicia sesión; de lo contrario te invitamos a registrarte para realizar tu 
+        pedido y disfrutar de nuestras maravillosas pizzas.
+    </ion-label>   
+  </ion-item> 
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button class="custom1" [routerLink]="['/registro']" expand="block">
+          <ion-icon slot="start" name="person-add" color="dark"></ion-icon>  
+        Registrate</ion-button>
+        <ion-button class="custom2" [routerLink]="['/login']" expand="block">
+          <ion-icon slot="start" name="person" color="dark"></ion-icon>  
+        Inicia Sesión</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,0 +1,38 @@
+<div class="ion-page">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="primary" expand="block" [routerLink]="['/']">
+        <ion-icon slot="end" name="cart"></ion-icon>
+      </ion-buttons>
+      <img  class="centered-header-image" src="/assets/Images/logo.png" />
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+    <ion-card>
+      <img alt="Pizza" src="https://alpina.com/media/mageplaza/blog/post/p/i/pizzas.jpg" />
+      <ion-card-header>
+        <ion-card-title>¡Ordena ya!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button class="custom2" expand="block" [routerLink]="['/pide-en-linea']">Pide en Línea
+          <ion-icon aria-hidden="true" name="bicycle" slot="start"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card> 
+    <ion-card>
+      <img alt="Pizza" src="https://www.napolike.it/wp-content/uploads/2023/06/pizza-italiana.jpg" />
+      <ion-card-header>
+        <ion-card-title>Da un vistazo a nuestro menú</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button class="custom1" expand="block" [routerLink]="['/catalogo']">Ver menú
+          <ion-icon aria-hidden="true" name="book" slot="start"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card> 
+  </ion-content>
+</div>
