@@ -2,18 +2,24 @@
     --background: url('/assets/Images/registro.jpg') no-repeat center center / cover;
     }
   
-ion-title, ion-label,  ion-button {
-      font-family: 'Bookman Old Style';
-    }
-  .custom-title-font{
-    font-family: 'Bookman Old Style';
-  }
- .custom1 {
+.custom1 {
     --background: #03381d;
 }
 .custom2 {
   --background:  rgb(120, 2, 2);
 }
-.custom3 {
-  --background: rgb(118, 171, 255);
+
+:host ::ng-deep .has-focus.sc-ion-input-md-h input.sc-ion-input-md {
+  caret-color: white; 
+}
+:host ::ng-deep .sc-ion-input-md-h{
+  --highlight-color-focused: #03381d;
+  --highlight-color: #03381d;
+  --border-color: #03381d;
+}
+ion-item.item-has-focus > ion-label, item-native{
+  color: white !important;
+}
+ion-item {
+  --highlight-color-focused: #03381d;
 }
