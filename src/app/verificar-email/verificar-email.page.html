@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: right; "><b>Verificar Email</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <h2 style="color:#fed49c">¡Estas a un paso de ser parte de nuestros crazy users!</h2>
+      <p >Te invitamos a que revises tu correo electrónico y des click al 
+        link que te enviamos para verificar que eres tú.</p>
+      <ion-col style="text-align: center;"> 
+      <ion-button class="custom1" type="submit" (click)="authService.SendVerificationMail()" expand="block">
+        <ion-icon slot="start" name="refresh"></ion-icon>  
+        Reenviar correo de verificación</ion-button>
+        <ion-button class="custom2" type="submit" [routerLink]="['/home']" expand="block">
+          <ion-icon slot="start" name="home"></ion-icon>  
+          Volver al Inicio de Sesión</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

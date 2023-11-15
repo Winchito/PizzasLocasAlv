@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar  class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: right;">Recupera tu contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content>
+    <ion-item lines="full">
+      <p>Ingresa tu email y te enviaremos las intrucciones para recuperar tu contraseña</p>
+    </ion-item>
+    <form>
+      <ion-row>
+        <ion-col>
+          <ion-item lines="full">
+            <ion-label class="custom-title-font"  position="floating"><b>Email</b></ion-label>
+            <ion-input type="text" #email required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button class="custom" type="submit" (click)="authService.PasswordRecover(email.value)" expand="block">Enviar email
+            <ion-icon slot="start" name="mail-unread"></ion-icon>  
+          </ion-button>
+          <ion-button class="custom1" type="submit" [routerLink]="['/home']" expand="block">
+            <ion-icon slot="start" name="home"></ion-icon>  
+            Volver al Inicio de Sesión</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-content>
+</ion-content>

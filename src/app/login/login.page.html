@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: right;">Inicia Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="full">
+    <ion-label class="custom-title-font" position="floating"><b>Email</b></ion-label>
+    <ion-input type="text" #email required></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label class="custom-title-font" position="floating"><b>Contraseña</b></ion-label>
+    <ion-input type="password" #password required></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-button class="custom1" type="submit" (click)="logIn(email, password)" expand="block">Inicia Sesión
+        <ion-icon slot="start" name="person"></ion-icon>    
+      </ion-button> 
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button class="custom2" expand="block" [routerLink]="['/recuperar-contra']">Recuperar Contraseña
+        <ion-icon slot="start" name="key"></ion-icon>  
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

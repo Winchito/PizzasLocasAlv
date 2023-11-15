@@ -1,0 +1,22 @@
+.custom-toolbar{
+--background: url('/assets/Images/registro.jpg') no-repeat center center / cover;
+}
+
+ion-button {
+  --background: #03381d;
+}
+
+:host ::ng-deep .has-focus.sc-ion-input-md-h input.sc-ion-input-md {
+  caret-color: white; 
+}
+:host ::ng-deep .sc-ion-input-md-h{
+  --highlight-color-focused: #03381d;
+  --highlight-color: #03381d;
+  --border-color: #03381d;
+}
+ion-item.item-has-focus > ion-label, item-native{
+  color: white !important;
+}
+ion-item {
+  --highlight-color-focused: #03381d;
+}
