@@ -2,13 +2,15 @@
     display: block;
     margin: 0 auto;
     text-align: center;
+    width: 50px;
   }
-
-  .custom-title-font{
-    font-family: 'Bookman Old Style';
-  }
-
-  ion-title, ion-card-title, ion-button {
-    font-family: 'Bookman Old Style';
-  }
- 
+ion-icon{
+  width: 35px;
+  height: 35px;
+}
+.custom1 {
+  --background: #03381d;
+}
+.custom2 {
+--background:  rgb(120, 2, 2);
+}
