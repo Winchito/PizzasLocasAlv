@@ -1,5 +1,4 @@
 import { Injectable, NgZone } from '@angular/core';
-import * as auth from 'firebase/auth';
 import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -7,34 +6,22 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import { InteractionService } from './interaction.service';
 @Injectable({
   providedIn: 'root',
 })
 
 export class AuthenticationService {
 
-  userData: any;
-  
-  constructor(public afStore: AngularFirestore, public ngFireAuth: AngularFireAuth, public router: Router, public ngZone: NgZone) {
-    this.ngFireAuth.authState.subscribe((user) => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user') || '{}');
-      } else {
-        localStorage.setItem('user', null || '{}');
-        JSON.parse(localStorage.getItem('user') || '{}');
-      }
-    });
-  }
+  constructor(public afStore: AngularFirestore, public ngFireAuth: AngularFireAuth, public router: Router, public ngZone: NgZone, private interaction: InteractionService) {}
 
   // Login con email y contraseña
-  SignIn(email: any, password: any) {
+  SignIn(email: string, password: string) {
     return this.ngFireAuth.signInWithEmailAndPassword(email, password);
   }
   // Registrar usuario con email y contraseña
-  RegisterUser(email: any, password: any) {
-    return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
+  RegisterUser(datos:User) {
+    return this.ngFireAuth.createUserWithEmailAndPassword(datos.email, datos.password);
   }
 
   // Verificación por email cuando el usuario se registra por primera vez
@@ -44,6 +31,15 @@ export class AuthenticationService {
         this.router.navigate(['verificar-email']);
       });
     });
+  }
+
+  stateUser(){
+    return this.ngFireAuth.authState
+  }
+
+  async getUid(){
+    const user = await this.ngFireAuth.currentUser;
+    return user?.uid
   }
 
   // Recuperar contrase­ña
@@ -63,7 +59,7 @@ export class AuthenticationService {
   // Devuelve true cuando el usuario inicio sesión
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null && user.emailVerifiedemailVerified !== false ? true : false;
   }
 
   // Devuelve true cuando el email del usuario esta verificado
@@ -72,7 +68,6 @@ export class AuthenticationService {
     return user.emailVerified !== false ? true : false;
   }
   
-  // Auth providers
   AuthLogin(provider: any) {
     return this.ngFireAuth
       .signInWithPopup(provider)
@@ -93,10 +88,12 @@ export class AuthenticationService {
       `users/${user.uid}`
     );
     const userData: User = {
-      id: user.uid,
+      uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
       emailVerified: user.emailVerified,
+      nombre: '',
+      password: '',
+      perfil: 'usuario'
     };
     return userRef.set(userData, {
       merge: true,
@@ -108,6 +105,8 @@ export class AuthenticationService {
     return this.ngFireAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['login']);
+      this.interaction.presentToast('Sesión finalizada.')
     });
   }
 }
+
