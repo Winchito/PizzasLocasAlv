@@ -17,7 +17,7 @@ export class RegistroPage implements OnInit {
     email: '',
     uid: null,
     password: '',
-    emailVerified: true,
+    emailVerified: false,
     perfil: 'usuario'
   }
   constructor(public authService: AuthenticationService, public router: Router, private fire: UserstorageService, private interaction: InteractionService) { }
@@ -30,14 +30,14 @@ export class RegistroPage implements OnInit {
       .then((res) => {
 
         this.authService.SendVerificationMail()
-        this.router.navigate(['verify-email']);
+        this.router.navigate(['verificar-email']);
         const path = 'Usuarios';
         const id =  res.user?.uid;
         this.datos.uid = id!;
         this.datos.password = ''
         this.fire.createDoc(this.datos, path, id!)
         this.interaction.closeLoading();
-        this.interaction.presentToast('Verificar tu email.')
+        this.interaction.presentToast('Verifica tu email.')
       })
       .catch((error) => {
         this.interaction.closeLoading();

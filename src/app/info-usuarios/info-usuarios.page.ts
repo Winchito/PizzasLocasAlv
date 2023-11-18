@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { User } from '../interfaces/user';
 import { UserstorageService } from '../services/userstorage.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 
@@ -12,15 +13,29 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class InfoUsuariosPage implements OnInit {
   datos: User[] = [];
-  
-  constructor(private fire: UserstorageService , public authService: AuthenticationService) {}
+  numeroUsuarios: number | undefined;
+
+  constructor(private fire: UserstorageService , public authService: AuthenticationService, private afAuth: AngularFireAuth) {}
+   
   ngOnInit() {
-      this.getDatos();   
+      this.getDatos();  
+      this.obtenerNumeroUsuarios(); 
   }
 
   getDatos(){
     this.fire.getCollection<User>('Usuarios').subscribe(res =>{
       this.datos = res;
   })
+
+}
+obtenerNumeroUsuarios() {
+
+  this.afAuth.authState.subscribe((user) => {
+    if (user) {
+      this.fire.getCollection<User>('Usuarios').subscribe((querySnapshot: any) => {
+          this.numeroUsuarios = querySnapshot.length;
+        });
+    }
+  });
 }
 }

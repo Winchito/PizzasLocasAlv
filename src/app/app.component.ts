@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './services/authentication.service';
 import { UserstorageService } from './services/userstorage.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from './interfaces/user';
 
 @Component({
@@ -16,18 +15,13 @@ export class AppComponent implements OnInit{
   constructor(private fire: UserstorageService , public authService: AuthenticationService) {}
   ngOnInit() {
     this.authService.stateUser().subscribe(res =>{
-      console.log('estado autenticacion', res);
-      this.getUid();
-      
+      this.getUid();   
   });
 }
  async getUid(){
   const uid = await this.authService.getUid();
   if(uid){
     this.uid = uid!;
-    console.log('uid', this.uid);
-  }else {
-    console.log('no existe uid');
   }this.getDatosUser();
 }
   getDatosUser() {
@@ -37,9 +31,7 @@ export class AppComponent implements OnInit{
       if (res){
         this.info = res;
         this.rol = res.perfil;
-      }
-      console.log('Datos son ', res);
-      
+      }      
     })
 
 }
