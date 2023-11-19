@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { User } from '../interfaces/user';
+import { UserstorageService } from '../services/userstorage.service';
+import { InteractionService } from '../services/interaction.service';
 
 @Component({
   selector: 'app-registro',
@@ -9,20 +12,36 @@ import { Router } from '@angular/router';
 })
 export class RegistroPage implements OnInit {
 
-  constructor(public authService: AuthenticationService, public router: Router) { }
-
-  ngOnInit() {
+  datos: User ={
+    nombre: '',
+    email: '',
+    uid: null,
+    password: '',
+    emailVerified: false,
+    perfil: 'usuario'
   }
+  constructor(public authService: AuthenticationService, public router: Router, private fire: UserstorageService, private interaction: InteractionService) { }
 
-  signUp(email: any, password: any) {
-    this.authService
-      .RegisterUser(email.value, password.value)
+  ngOnInit() {}
+
+  signUp() {
+    this.interaction.presentLoading('Registrando...')
+    this.authService.RegisterUser(this.datos)
       .then((res) => {
-         this.authService.SendVerificationMail()
-        this.router.navigate(['verify-email']);
+
+        this.authService.SendVerificationMail()
+        this.router.navigate(['verificar-email']);
+        const path = 'Usuarios';
+        const id =  res.user?.uid;
+        this.datos.uid = id!;
+        this.datos.password = ''
+        this.fire.createDoc(this.datos, path, id!)
+        this.interaction.closeLoading();
+        this.interaction.presentToast('Verifica tu email.')
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.interaction.closeLoading();
+        this.interaction.presentToast('Datos invalidos.')
       });
   }
 

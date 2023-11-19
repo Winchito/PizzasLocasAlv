@@ -1,6 +1,8 @@
 export interface User {
-    id: string;
+    uid: string | null;
+    nombre: string;
     email: string;
-    displayName: string;
+    password: string;
     emailVerified: boolean;
+    perfil: 'administrador' | 'usuario'
  }
