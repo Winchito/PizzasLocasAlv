@@ -12,6 +12,36 @@
   </ion-header>
   
   <ion-content class="ion-padding">
+    <ion-card color="light">
+      <div class="weather">
+        <h1>El tiempo actualmente</h1>
+        <div class="info">
+          <img alt="Weather" src="{{this.weather?.current?.condition?.icon}}"/>
+          <h1>{{this.weather?.current?.temp_c}} °C</h1>
+        </div>
+      </div>
+      <ion-card-header>
+        <ion-card-title>{{this.weather?.location?.name}}, {{this.weather?.location?.country}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="infoWeather">
+          <div>
+            <h2>Hora actual:</h2>
+            <h2>Presión atmosférica:</h2>
+            <h2>Dirección del viento:</h2>
+            <h2>Velocidad del viento:</h2>
+            <h2>Humedad:</h2>
+          </div>
+          <div>
+            <h3>{{this.weather?.location?.localtime}}</h3>
+            <h3>{{this.weather?.current?.pressure_mb}} mb</h3>
+            <h3>{{this.weather?.current?.wind_dir}}</h3>
+            <h3>{{this.weather?.current?.wind_kph}} kmph</h3>
+            <h3>{{this.weather?.current?.humidity}} %</h3>
+          </div> 
+        </div>
+      </ion-card-content>
+    </ion-card> 
     <ion-card>
       <img alt="Pizza" src="https://alpina.com/media/mageplaza/blog/post/p/i/pizzas.jpg" />
       <ion-card-header>
