@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { HomeUsuarioLoggeadoPageRoutingModule } from './home-usuario-loggeado-routing.module';
 
 import { HomeUsuarioLoggeadoPage } from './home-usuario-loggeado.page';
+import { HttpClientModule } from '@angular/common/http';
+import { TimeApiService } from '../services/timeApi.service';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomeUsuarioLoggeadoPageRoutingModule
+    HomeUsuarioLoggeadoPageRoutingModule,
+    HttpClientModule
   ],
-  declarations: [HomeUsuarioLoggeadoPage]
+  declarations: [HomeUsuarioLoggeadoPage],
+  providers:[TimeApiService]
 })
 export class HomeUsuarioLoggeadoPageModule {}
