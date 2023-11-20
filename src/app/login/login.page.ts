@@ -20,15 +20,15 @@ export class LoginPage implements OnInit {
         if (this.authService.isEmailVerified) {
           this.router.navigate(['home-usuario-loggeado']);
           this.interaction.closeLoading();
-          this.interaction.presentToast('Ingreso exitoso.')
+          this.interaction.presentToast('Ingreso exitoso.');
         } else {
           this.interaction.closeLoading();
-          this.interaction.presentToast('¡El correo no esta verificado!')
+          this.interaction.presentToast('¡El correo no esta verificado!');
         }
       })
       .catch((error) => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('Usuario o contraseña invalido.')
+        this.interaction.presentToast('Usuario o contraseña invalido.');
       });
   }
 

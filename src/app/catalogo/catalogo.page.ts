@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../services/authentication.service';
+
 
 
 @Component({
@@ -9,7 +9,8 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class CatalogoPage implements OnInit {
 
-  constructor(public authService: AuthenticationService) {}
+
+  constructor() {}
 
   ngOnInit() {
     

@@ -11,61 +11,63 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-  <form>
-    <ion-text style="color:#fed49c"><sub><b>Dirección</b></sub></ion-text>
-    <ion-list>
-      <ion-item>
-        <ion-select label="Tipo de via" label-placement="floating">
-          <ion-select-option value="Autopista">Autopista</ion-select-option>
-          <ion-select-option value="Avenida">Avenida</ion-select-option>
-          <ion-select-option value="Avenida Calle">Avenida Calle</ion-select-option>
-          <ion-select-option value="Avenida Carrera">Avenida Carrera</ion-select-option>
-          <ion-select-option value="Calle">Calle</ion-select-option>
-          <ion-select-option value="Carrera">Carrera</ion-select-option>
-          <ion-select-option value="Diagonal">Diagonal</ion-select-option>
-          <ion-select-option value="Trasversal">Trasversal</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-input style="width: 30%"></ion-input>
-        <ion-text style="width: 30px">#</ion-text>
-        <ion-input style="width: 35%"></ion-input>
-        <ion-text style="width: 30px">-</ion-text>
-        <ion-input style="width: 35%"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Barrio" labelPlacement="floating" placeholder="Ejemplo: Suba Gaitana"></ion-input>
-      </ion-item>
-      <ion-text style="color:#fed49c"><sub><b>Tipo de Inmueble</b></sub></ion-text>
-      <ion-item>
-        <ion-select label="Seleccionar" label-placement="floating">
-          <ion-select-option value="Apartamento">Apartamento</ion-select-option>
-          <ion-select-option value="Casa">Casa</ion-select-option>
-          <ion-select-option value="Edificio">Edificio</ion-select-option>
-          <ion-select-option value="Hotel">Hotel</ion-select-option>
-          <ion-select-option value="Oficina">Oficina</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-text style="color:#fed49c"><sub><b>Bloque o Interior</b></sub></ion-text>
-      <ion-item>
-        <ion-select label="Seleccionar" label-placement="floating">
-          <ion-select-option value="Manzana">Manzana</ion-select-option>
-          <ion-select-option value="Zona">Zona</ion-select-option>
-          <ion-select-option value="Bloque">Bloque</ion-select-option>
-          <ion-select-option value="Habitación">Habitación</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="Detalles adicionales, Ejemplo: # de torre, etc."></ion-input>
-      </ion-item>
-      <ion-text style="color:#fed49c"><sub><b>Instrucciones para el repartidor</b></sub></ion-text>
-      <ion-item>
-        <ion-input style="width: 100%; height: 50%;" placeholder="Tocar el timbre, etc."></ion-input>
-      </ion-item>
-        <ion-button class="custom1" expand="block" type="submit" [routerLink]="['/catalogo']">Ir al menú
+    <form (ngSubmit)="onSubmit()" #formulario="ngForm">
+      <ion-text style="color:#fed49c"><sub><b>Dirección *</b></sub></ion-text>
+      <ion-list>
+        <ion-item>
+          <ion-select [(ngModel)]="tipoVia" name="tipoVia" label="Tipo de vía" label-placement="floating" required>
+            <ion-select-option value="Autopista">Autopista</ion-select-option>
+            <ion-select-option value="Avenida">Avenida</ion-select-option>
+            <ion-select-option value="Avenida Calle">Avenida Calle</ion-select-option>
+            <ion-select-option value="Avenida Carrera">Avenida Carrera</ion-select-option>
+            <ion-select-option value="Calle">Calle</ion-select-option>
+            <ion-select-option value="Carrera">Carrera</ion-select-option>
+            <ion-select-option value="Diagonal">Diagonal</ion-select-option>
+            <ion-select-option value="Transversal">Transversal</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="numero" name="numero *" style="width: 30%" placeholder="Número" required></ion-input>
+          <ion-text style="width: 30px">#</ion-text>
+          <ion-input [(ngModel)]="complemento1" name="complemento1" style="width: 35%" placeholder="Comp. 1 *"></ion-input>
+          <ion-text style="width: 30px">-</ion-text>
+          <ion-input [(ngModel)]="complemento2" name="complemento2" style="width: 35%" placeholder="Comp. 2 *"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="barrio" name="barrio" label="Barrio *" labelPlacement="floating" placeholder="Ejemplo: Suba Gaitana" required></ion-input>
+        </ion-item>
+        <ion-text style="color:#fed49c"><sub><b>Tipo de Inmueble</b></sub></ion-text>
+        <ion-item>
+          <ion-select [(ngModel)]="tipoInmueble" name="tipoInmueble" label="Seleccionar" label-placement="floating">
+            <ion-select-option value="Apartamento">Apartamento</ion-select-option>
+            <ion-select-option value="Casa">Casa</ion-select-option>
+            <ion-select-option value="Edificio">Edificio</ion-select-option>
+            <ion-select-option value="Hotel">Hotel</ion-select-option>
+            <ion-select-option value="Oficina">Oficina</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text style="color:#fed49c"><sub><b>Bloque o Interior</b></sub></ion-text>
+        <ion-item>
+          <ion-select [(ngModel)]="bloqueInterior" name="bloqueInterior" label="Seleccionar" label-placement="floating">
+            <ion-select-option value="Manzana">Manzana</ion-select-option>
+            <ion-select-option value="Zona">Zona</ion-select-option>
+            <ion-select-option value="Bloque">Bloque</ion-select-option>
+            <ion-select-option value="Habitación">Habitación</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="detallesAdicionales" name="detallesAdicionales" placeholder="Ejemplo: # de torre, etc."></ion-input>
+        </ion-item>
+        <ion-text style="color:#fed49c"><sub><b>Instrucciones para el repartidor</b></sub></ion-text>
+        <ion-item>
+          <ion-input [(ngModel)]="instruccionesRepartidor" name="instruccionesRepartidor" style="width: 100%; height: 50%;" placeholder="Tocar el timbre, etc."></ion-input>
+        </ion-item>
+        <ion-text style="color:#fed49c"><sub><b>Los campos con * son requeridos!</b></sub></ion-text>
+        <br><br>
+        <ion-button class="custom1" expand="block" type="submit">Ir al menú
           <ion-icon aria-hidden="true" name="book" slot="start"></ion-icon>
         </ion-button>
-    </ion-list>
-  </form>
+      </ion-list>
+    </form>
   </ion-content>
 </div>
