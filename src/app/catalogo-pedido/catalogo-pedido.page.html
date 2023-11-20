@@ -1,0 +1,89 @@
+<div class="ion-page">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <img  class="centered-header-image" src="/assets/Images/Menu.png" />
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-text>Enviar pedido a {{direccionCompleta}} </ion-text>
+    <ion-text [routerLink]="['/pedir-en-linea']">Cambiar </ion-text>
+      <form (ngSubmit)="submitForm()" #pizzaForm="ngForm">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Tamaño Pizzas</ion-card-title>
+          <ion-card-subtitle>Selecciona el tamaño de tu pizza</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngFor="let pizza of tamanoPizza">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img [src]="pizza.URL" />
+              </ion-thumbnail>
+              <ion-checkbox justify="space-between" (click)="selectTamano(i)" [(ngModel)]="pizza.selected" [value]="pizza.name" [ngModelOptions]="{standalone: true}">{{pizza.name}} 
+                <br><ion-text>{{pizza.price | currency:"COP":"symbol"}}</ion-text>
+              </ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Pizzas</ion-card-title>
+          <ion-card-subtitle>Selecciona el sabor de pizza que desees</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngFor="let pizza of saborPizza">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img [src]="pizza.URL" />
+              </ion-thumbnail>
+              <ion-checkbox justify="space-between" (click)="selectPizza(i)" [(ngModel)]="pizza.selected" [value]="pizza.name" [ngModelOptions]="{standalone: true}">{{pizza.name}} 
+                <br><ion-text>{{pizza.price | currency:"COP":"symbol"}}</ion-text>
+              </ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Bebida</ion-card-title>
+          <ion-card-subtitle>Selecciona la bebida con la que deseas acompañar tu crazy pizza</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngFor="let bebida of bebidaPizza">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img [src]="bebida.URL" />
+              </ion-thumbnail>
+              <ion-checkbox justify="space-between" (click)="selectBebida(i)"  [(ngModel)]="bebida.selected" [value]="bebida.name" [ngModelOptions]="{standalone: true}">{{bebida.name}}
+                <br><ion-text>{{bebida.price |currency:"COP":"symbol"}}</ion-text>
+              </ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Ingredientes Adicionales</ion-card-title>
+          <ion-card-subtitle>Selecciona ingredientes adicionales para personalizar tu pizza</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngFor="let pizza of adicionalPizza">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img [src]="pizza.URL" />
+              </ion-thumbnail>
+              <ion-checkbox justify="space-between" [(ngModel)]="pizza.selected" [value]="pizza.name" [ngModelOptions]="{standalone: true}">{{pizza.name}}
+                <br><ion-text>{{pizza.price | currency:"COP":"symbol"}}</ion-text>
+              </ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-button expand="full" type="submit" color="warning">Ir al carrito de compras</ion-button>
+    </form>
+  </ion-content>
+  </div>

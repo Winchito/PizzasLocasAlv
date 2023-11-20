@@ -7,22 +7,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form>    
+<ion-content>  
+    <ion-item lines="full">
+      <ion-label position="floating"><b>Nombre Completo</b></ion-label>
+      <ion-input [(ngModel)]="datos.nombre" #nombre required></ion-input>
+    </ion-item> 
     <ion-item lines="full">
       <ion-label position="floating"><b>Correo Electrónico</b></ion-label>
-      <ion-input type="email" #email required></ion-input>
+      <ion-input [(ngModel)]="datos.email" type="email" #email required></ion-input>
     </ion-item> 
     <ion-item lines="full">
       <ion-label position="floating"><b>Contraseña</b></ion-label>
-      <ion-input type="password" #password required></ion-input>
+      <ion-input [(ngModel)]="datos.password" type="password" #password required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col> 
-      <ion-button type="submit" (click)="signUp(email, password)" expand="block">
+      <ion-button type="submit" (click)="signUp()" expand="block">
         <ion-icon slot="start" name="pizza"></ion-icon>  
         Registrate</ion-button>
       </ion-col>
     </ion-row>
-  </form>
+
 </ion-content>

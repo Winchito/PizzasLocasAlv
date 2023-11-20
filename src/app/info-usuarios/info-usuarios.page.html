@@ -1,0 +1,31 @@
+<div class="ion-page">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <img  class="centered-header-image" src="/assets/Images/Info-usuarios.png" />
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Datos Usuarios Registrados</ion-card-title>
+        <ion-card-subtitle>Número total de usuarios registrados: {{numeroUsuarios}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let dato  of datos">
+            <ion-avatar aria-hidden="true" slot="start">
+              <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+            <!-- <ion-text></ion-text> -->
+            <ion-label ><b>Nombre: </b><br>{{dato.nombre}}<br><br><b>Email: </b><br>{{dato.email}} <br><br><b>Perfil: </b><br>{{dato.perfil}} </ion-label>
+
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+   
+  </ion-content>
+</div>

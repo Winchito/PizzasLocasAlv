@@ -2,22 +2,30 @@
   <ion-menu menuId="main-menu" contentId="main">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menú Principal</ion-title>
+        <ion-title><b class="ion-text-wrap">Menú Principal</b></ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
 
-      <ion-list>
-        <ion-item>
+      <ion-list >
+        <ion-item   *ngIf="info">
           <ion-avatar aria-hidden="true" slot="start">
             <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </ion-avatar>
-          <ion-label class="custom-title-font"><b>Usuario</b></ion-label>
+          <ion-label ><b>{{info.nombre}}</b></ion-label>
         </ion-item>
         <ion-menu-toggle>
         <ion-item [routerLink]="['/home-usuario-loggeado']">
           <ion-icon aria-hidden="true" name="home" slot="start"></ion-icon>
           <ion-label class="custom-title-font">Inicio</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item *ngIf="rol === 'administrador'" [routerLink]="['/info-usuarios']">
+          <ion-icon aria-hidden="true" name="planet" slot="start"></ion-icon>
+          <div class="ion-text-wrap">
+          <ion-label id="custom-title-font" >Información Usuarios</ion-label>
+        </div>
         </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>
@@ -30,12 +38,6 @@
         <ion-item [routerLink]="['/catalogo']">
           <ion-icon aria-hidden="true" name="book" slot="start"></ion-icon>
           <ion-label class="custom-title-font">Menú</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-        <ion-menu-toggle>
-        <ion-item [routerLink]="['/home-usuario-loggeado']">
-          <ion-icon aria-hidden="true" name="rocket" slot="start"></ion-icon>
-          <ion-label class="custom-title-font">Sigue tu Pedido</ion-label>
         </ion-item>
       </ion-menu-toggle>
       </ion-list>
