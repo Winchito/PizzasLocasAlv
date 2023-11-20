@@ -1,3 +1,24 @@
+h1{
+  font-size: 16px;
+}
+h2{
+  font-size: 12px;
+}
+h3{
+  font-size: 12px;
+  text-align: right;
+}
+.weather{
+padding: 0px 20px;
+}
+.infoWeather{
+  display: flex;
+  justify-content: space-between;
+}
+.info{
+  display: flex;
+  justify-content: space-around;
+}
 .centered-header-image {
     display: block;
     margin: 0 auto;
