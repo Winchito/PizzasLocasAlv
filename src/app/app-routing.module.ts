@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'catalogo-pedido',
     loadChildren: () => import('./catalogo-pedido/catalogo-pedido.module').then( m => m.CatalogoPedidoPageModule)
   },
+  {
+    path: 'carrito-compras',
+    loadChildren: () => import('./carrito-compras/carrito-compras.module').then( m => m.CarritoComprasPageModule)
+  },
 
 
 ];

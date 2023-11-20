@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -11,16 +11,17 @@ import { ActivatedRoute } from '@angular/router';
 export class CatalogoPedidoPage implements OnInit {
 
   direccionCompleta: string = '';
+  instruccionesRepartidor: string = '';
 
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit() {
 
 
-        // Obtener los parámetros de la URL, en este caso, asumimos que 'direccion' es el nombre del parámetro
+        // Obtener los parámetros de la URL
         const direccionVia = this.route.snapshot.queryParamMap.get('tipoVia') || '';
         const direccionNumero = this.route.snapshot.queryParamMap.get('numero') || '';
         const direccionComplemento1 = this.route.snapshot.queryParamMap.get('complemento1') || '';
@@ -32,33 +33,57 @@ export class CatalogoPedidoPage implements OnInit {
         const instruccionesRepartidor = this.route.snapshot.queryParamMap.get('instruccionesRepartidor') || ''; 
     
         // Concatenar los componentes de la dirección
-        this.direccionCompleta = `${direccionVia} ${direccionNumero} # ${direccionComplemento1} - ${direccionComplemento2}.
-        ${tipoInmueble} ${bloqueInterior} ${detallesAdicionales}, ${direccionBarrio}`;
-    
+        this.direccionCompleta = `${direccionVia} ${direccionNumero} # ${direccionComplemento1} - ${direccionComplemento2}. ${tipoInmueble} ${bloqueInterior} ${detallesAdicionales}, ${direccionBarrio}`;
   }
 
   submitForm() {
+
     // Filtra las pizzas seleccionadas
     const selectedTamanoPizza = this.tamanoPizza.filter((tamanoPizza) => tamanoPizza.selected);
     const selectedSaborPizza = this.saborPizza.filter((saborPizza) => saborPizza.selected);
     const selectedBebidaPizza = this.bebidaPizza.filter((bebidaPizza) => bebidaPizza.selected);
     const selectedadicionalPizza = this.adicionalPizza.filter((adicionalPizza) => adicionalPizza.selected);
+    const direccionEnviada = this.direccionCompleta;
 
-    // Extrae los valores que deseas enviar
-    const selectedPizzaNames = selectedSaborPizza.map((pizza) => pizza.name);
-    const selectedBebidaNames = selectedBebidaPizza.map((bebida) => bebida.name);
-    const selectedTamanoNames = selectedTamanoPizza.map((tamano) => tamano.name);
-    const selectedAdicionalNames = selectedadicionalPizza.map((adicional) => adicional.name);
-    const pizzaPrice = selectedTamanoPizza.reduce((total, pizza) => total + pizza.price, 0); 
-    const bebidaPrice = selectedSaborPizza.reduce((total, bebida) => total + bebida.price, 0);
-    const tamanoPrice = selectedBebidaPizza.reduce((total, tamano) => total + tamano.price, 0);
-    const adicionalPrice = selectedadicionalPizza.reduce((total, adicional) => total + adicional.price, 0);
-    const totalPrice =  pizzaPrice + bebidaPrice + tamanoPrice + adicionalPrice
+    // Extrae los valores que se quieren
+    const selectedPizzaNames = selectedSaborPizza.map((pizza) => {
+      return{
+        name: pizza.name,
+        price: pizza.price,
+        url: pizza.URL
+      }
+        });
+    const selectedBebidaNames = selectedBebidaPizza.map((bebida) => {
+      return{
+        name: bebida.name,
+        price: bebida.price,
+        url: bebida.URL
+      }
+        });
+    const selectedTamanoNames = selectedTamanoPizza.map((tamano) => {
+      return{
+        name: tamano.name,
+        price: tamano.price,
+        url: tamano.URL
+      }
+        });
+    const selectedAdicionalNames = selectedadicionalPizza.map((adicional) => {
+      return{
+        name: adicional.name,
+        price: adicional.price,
+        url: adicional.URL
+      }
+        });
 
-    // Puedes hacer lo que quieras con estos valores, por ejemplo, enviarlos a través de una solicitud HTTP
-    console.log('Pizzas seleccionadas:', selectedPizzaNames, 'Bebidas seleccionadas:', selectedBebidaNames,
-    'Tamaño seleccionado:', selectedTamanoNames, 'Bebidas seleccionadas:', selectedAdicionalNames);
-    console.log('Precio total:', totalPrice);
+      localStorage.setItem('selectedPizzaInfo', JSON.stringify(selectedPizzaNames));
+      localStorage.setItem('selectedBebidaInfo', JSON.stringify(selectedBebidaNames));
+      localStorage.setItem('selectedTamanosInfo', JSON.stringify(selectedTamanoNames));
+      localStorage.setItem('selectedAdicionalInfo', JSON.stringify(selectedAdicionalNames));
+      localStorage.setItem('selectedAdicionalInfo', JSON.stringify(selectedAdicionalNames));
+      localStorage.setItem('direccionCompleta', JSON.stringify(direccionEnviada));
+      localStorage.setItem('instruccionesRepartidor', JSON.stringify(this.instruccionesRepartidor));
+
+    this.router.navigate(['/carrito-compras']);
   }
 
   selectPizza(index: number) {

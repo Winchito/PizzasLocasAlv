@@ -32,7 +32,6 @@ export class PideEnLineaPage implements OnInit {
 
   onSubmit() {
     if (!this.isValidForm()) {
-      // Realizar alguna acción, como mostrar un mensaje de error
       this.interaction.presentToast('Completa los valores requeridos!');
     }else{
 
