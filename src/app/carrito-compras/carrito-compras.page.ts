@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-carrito-compras',
@@ -16,8 +18,10 @@ export class CarritoComprasPage implements OnInit {
   selectedCompraInfo: any;
   precioTotal: number = 0;
 
-  constructor() { }
 
+  constructor(private router: Router) {}
+  
+  
   ngOnInit() {
 
   const storedPizzaData = localStorage.getItem('selectedPizzaInfo');
@@ -40,14 +44,14 @@ export class CarritoComprasPage implements OnInit {
 
   this.precioTotal = this.selectedCompraInfo.reduce((total: number, producto: any) => total + producto.price, 0);
 
-
-  console.log('Datos recuperados de localStorage:', this.selectedPizzasInfo);
-  console.log('Datos recuperados de localStorage:', this.selectedBebidasInfo);
-  console.log('Datos recuperados de localStorage:', this.selectedTamanoInfo);
-  console.log('Datos recuperados de localStorage:', this.selectedAdicionalesInfo);
-  console.log('Datos recuperados de localStorage:', this.storedDireccion);
-  console.log('Datos recuperados de localStorage:', this.storedInstrucciones);
-  console.log('Datos recuperados de localStorage Unidos:', this.selectedCompraInfo);
   }
 
-}
+  pagoExitoso(){
+    localStorage.clear()
+    this.router.navigate(['/pago-existoso']);
+  }
+
+    
+  }
+
+

@@ -29,15 +29,16 @@ export class RegistroPage implements OnInit {
     this.authService.RegisterUser(this.datos)
       .then((res) => {
 
-        this.authService.SendVerificationMail()
-        this.router.navigate(['verificar-email']);
+        //this.authService.SendVerificationMail()
+        this.router.navigate(['login']);
         const path = 'Usuarios';
         const id =  res.user?.uid;
         this.datos.uid = id!;
         this.datos.password = ''
         this.fire.createDoc(this.datos, path, id!)
         this.interaction.closeLoading();
-        this.interaction.presentToast('Verifica tu email.')
+        //this.interaction.presentToast('Verifica tu email.')
+        this.interaction.presentToast('Inicia Sesión.')
       })
       .catch((error) => {
         this.interaction.closeLoading();

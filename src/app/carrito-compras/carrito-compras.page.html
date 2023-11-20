@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <div *ngIf="precioTotal !== 0">
   <ion-card>
     <ion-card-header>
       <ion-card-title>Pedido</ion-card-title>
@@ -28,5 +29,27 @@
     <br>
     <ion-text *ngIf="storedInstrucciones !== ''"><h5>Instrucciones {{storedInstrucciones}}</h5></ion-text>
   </ion-card>
-  <ion-button expand="full" color="success">Pagar con PayPal</ion-button>
+  <ion-button expand="full" color="success" (click)="pagoExitoso()">Pagar</ion-button>
+</div>
+<div *ngIf="precioTotal === 0">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Pedido</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-text>Aun no tienes ordenes preparadas!</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-button class="custom2" expand="block" [routerLink]="['/pide-en-linea']">Pide en Línea
+    <ion-icon aria-hidden="true" name="bicycle" slot="start"></ion-icon>
+  </ion-button>
+  <br>
+  <ion-button class="custom1" expand="block" [routerLink]="['/home-usuario-loggeado']">Volver al Inicio
+    <ion-icon slot="start" name="home"></ion-icon>  
+  </ion-button>
+</div>
 </ion-content>

@@ -47,12 +47,10 @@ export class AuthenticationService {
     return this.ngFireAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert(
-          'Se ha enviado un correo para recuperar la contraseña al Email establecido, revisa tu bandeja de entrada.'
-        );
+        this.interaction.presentToast('Se ha enviado un correo para recuperar la contraseña al Email establecido, revisa tu bandeja de entrada.')
       })
       .catch((error) => {
-        window.alert(error);
+        this.interaction.presentToast("Correo Electronico inválido");
       });
   }
 

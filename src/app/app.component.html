@@ -2,7 +2,7 @@
   <ion-menu menuId="main-menu" contentId="main">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menú Principal</ion-title>
+        <ion-title><b class="ion-text-wrap">Menú Principal</b></ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
@@ -23,7 +23,9 @@
       <ion-menu-toggle>
         <ion-item *ngIf="rol === 'administrador'" [routerLink]="['/info-usuarios']">
           <ion-icon aria-hidden="true" name="planet" slot="start"></ion-icon>
-          <ion-label class="custom-title-font">Información Usuarios</ion-label>
+          <div class="ion-text-wrap">
+          <ion-label id="custom-title-font" >Información Usuarios</ion-label>
+        </div>
         </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>

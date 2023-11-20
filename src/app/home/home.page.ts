@@ -7,9 +7,11 @@ import { TimeApiService } from '../services/timeApi.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
+  
   weather: [] = []
   constructor(private weatherService: TimeApiService) {}
   ngOnInit(): void {
+    localStorage.clear()
     this.weatherService.getWeatherByCity('Bogota').subscribe({
       next: (response)=>{
         this.weather= response

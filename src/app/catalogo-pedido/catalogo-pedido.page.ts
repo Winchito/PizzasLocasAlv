@@ -30,7 +30,7 @@ export class CatalogoPedidoPage implements OnInit {
         const tipoInmueble = this.route.snapshot.queryParamMap.get('tipoInmueble') || '';
         const bloqueInterior = this.route.snapshot.queryParamMap.get('bloqueInterior') || '';
         const detallesAdicionales = this.route.snapshot.queryParamMap.get('detallesAdicionales') || '';
-        const instruccionesRepartidor = this.route.snapshot.queryParamMap.get('instruccionesRepartidor') || ''; 
+       this.instruccionesRepartidor = this.route.snapshot.queryParamMap.get('instruccionesRepartidor') || ''; 
     
         // Concatenar los componentes de la dirección
         this.direccionCompleta = `${direccionVia} ${direccionNumero} # ${direccionComplemento1} - ${direccionComplemento2}. ${tipoInmueble} ${bloqueInterior} ${detallesAdicionales}, ${direccionBarrio}`;
@@ -120,7 +120,7 @@ export class CatalogoPedidoPage implements OnInit {
   ];
 
   tamanoPizza = [
-    { id: 1, name: 'Pequeña (4 trozos)', price: 15000, selected: false, URL: "https://d4i7e0edqqgwm.cloudfront.net/documents/producto/420pepperoni-personal-5fb4318d7f6fa343145323.jpg1" },
+    { id: 1, name: 'Pequeña (4 trozos)', price: 15000, selected: false, URL: "https://d4i7e0edqqgwm.cloudfront.net/documents/producto/420pepperoni-personal-5fb4318d7f6fa343145323.jpg" },
     { id: 2, name: 'Mediana (6 trozos)', price: 20000, selected: false, URL: "https://blog.papajohns.com.gt/hs-fs/hubfs/Blogs%202023/Marzo/Pizzas%20al%20Chilazo/Pizza%20Mediana%20de%20Pepperoni.jpg?width=500&height=303&name=Pizza%20Mediana%20de%20Pepperoni.jpg" },
     { id: 3, name: 'Grande (8 trozos)', price: 25000, selected: false, URL: "https://www.pizzaiolo.mx/img/blog/pizza-hecha-de-varios-tipos-de-pizza-02%20(1).png" },
     { id: 4, name: 'Familiar (10 trozos)', price: 30000, selected: false, URL:"https://www.magazinedigital.cl/wp-content/uploads/2023/02/Super-Pepperoni_1.jpg" }
@@ -136,10 +136,12 @@ export class CatalogoPedidoPage implements OnInit {
 
   bebidaPizza = [
     { id: 1, name: 'Canada Dry 1.5L', price: 4500, selected: false, URL: "https://copservir.vtexassets.com/arquivos/ids/765000/GINGER-CANADA-DRY_F.png?v=637950273511400000" },
-    { id: 2, name: 'Coca-Cola 1.5L', price: 5500, selected: false, URL: "https://licoreslarebaja.com/173-large_default/gaseosa-coca-cola-15ml.jpg" },
-    { id: 3, name: 'Manzana Postobon 1.5L', price: 5500, selected: false, URL:"https://misaboracolombia.com/cdn/shop/products/Colombiana_la_nuestra_pet_3_125lt_800px_800x.png?v=1576124798" },
-    { id: 4, name: 'Sprite 1.5L', price: 5000, selected: false, URL: "https://copservir.vtexassets.com/arquivos/ids/765422/GASEOSA-MANZANA-POSTOBON_F.png?v=637950275205400000" },
+    { id: 2, name: 'Coca-Cola 1.5L', price: 7500, selected: false, URL: "https://licoreslarebaja.com/173-large_default/gaseosa-coca-cola-15ml.jpg" },
+    { id: 3, name: 'Colombiana 1.5L', price: 6000, selected: false, URL:"https://misaboracolombia.com/cdn/shop/products/Colombiana_la_nuestra_pet_3_125lt_800px_800x.png?v=1576124798" },
+    { id: 3, name: 'Manzana Postobon 1.5L', price: 5500, selected: false, URL:"https://copservir.vtexassets.com/arquivos/ids/765422/GASEOSA-MANZANA-POSTOBON_F.png?v=637950275205400000" },
+    { id: 4, name: 'Sprite 1.5L', price: 4000, selected: false, URL: "https://copservir.vtexassets.com/arquivos/ids/769778/GASEOSA-SPRITE_F.png?v=637951117939600000" },
   ]
 
 
 }
+
