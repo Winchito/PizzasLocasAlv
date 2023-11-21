@@ -16,8 +16,7 @@ export class HomeUsuarioLoggeadoPage implements OnInit {
   ngOnInit() {
     this.weatherService.getWeatherByCity('Bogota').subscribe({
       next: (response)=>{
-        this.weather= response
-        console.log(this.weather);
+        this.weather = response
       },
       error: (errorData)=>{
         console.log(errorData)
